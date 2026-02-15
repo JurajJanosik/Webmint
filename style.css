@@ -1,0 +1,266 @@
+:root {
+    --bg-dark: #0f1012;
+    --bg-card: #1a1c1e;
+    --mint-green: #7cfc00;
+    --text-white: #ffffff;
+    --text-gray: #a0a0a0;
+    --nav-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header & Nav */
+header {
+    height: var(--nav-height);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    background: rgba(15, 16, 18, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+header.scrolled {
+    height: 70px;
+    background: #000;
+    border-bottom: 1px solid rgba(124, 252, 0, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.logo img {
+    height: 120px; /* Tu si zväčšuj logo bez toho, aby si rozbil header */
+    width: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s ease;
+}
+
+header.scrolled .logo img {
+    height: 80px;
+}
+
+.logo span {
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-left: 100px; /* Odsadenie textu od loga */
+    letter-spacing: 1px;
+}
+
+header.scrolled .logo span {
+    margin-left: 70px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--mint-green);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--mint-green);
+    color: var(--mint-green);
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    background: radial-gradient(circle at center, #1a2e1a 0%, var(--bg-dark) 100%);
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.btn-primary {
+    background: var(--mint-green);
+    color: #000;
+    padding: 18px 45px;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(124, 252, 0, 0.3);
+}
+
+/* Services */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 100px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: var(--bg-card);
+    padding: 50px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.4s;
+}
+
+.service-card:hover {
+    border-color: var(--mint-green);
+    transform: translateY(-10px);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    padding: 100px 5% 50px;
+    background: #050505;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-logo img {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.footer-socials a {
+    color: var(--text-gray);
+    margin-left: 20px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-socials a:hover {
+    color: var(--mint-green);
+}
+
+/* Hamburger & Mobile */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: var(--text-white);
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.logo a {
+    cursor: pointer;
+}
+
+/* Jemná animácia - logo sa pri prejdení myšou trochu zväčší */
+.logo a:hover img {
+    transform: translateY(-50%) scale(1.05);
+}
+
+@media (max-width: 900px) {
+    .hamburger { display: flex; }
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 0;
+        clip-path: circle(0% at 100% 0%);
+        transition: 0.6s ease-in-out;
+    }
+    .nav-links.active {
+        clip-path: circle(150% at 100% 0%);
+    }
+    .logo span { display: none; } /* Na mobile skryjeme text, necháme len logo */
+    .logo img { position: static; transform: none; height: 50px; }
+}
+
