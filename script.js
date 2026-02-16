@@ -7,24 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let currentLang = 'sk';
 
-    // 1. Prepinanie jazykov
+    // 1. Prepínanie jazykov (vrátane placeholderov)
     langBtn.addEventListener('click', () => {
+        const inputs = document.querySelectorAll('[data-sk-placeholder]');
+        
         if (currentLang === 'sk') {
-            translatableElements.forEach(el => {
-                el.textContent = el.getAttribute('data-en');
-            });
+            translatableElements.forEach(el => el.textContent = el.getAttribute('data-en'));
+            inputs.forEach(el => el.setAttribute('placeholder', el.getAttribute('data-en-placeholder')));
             langBtn.textContent = 'SK';
             currentLang = 'en';
         } else {
-            translatableElements.forEach(el => {
-                el.textContent = el.getAttribute('data-sk');
-            });
+            translatableElements.forEach(el => el.textContent = el.getAttribute('data-sk'));
+            inputs.forEach(el => el.setAttribute('placeholder', el.getAttribute('data-sk-placeholder')));
             langBtn.textContent = 'EN';
             currentLang = 'sk';
         }
     });
 
-    // 2. Skrolovací efekt pre header
+    // 2. Skrolovací efekt
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
@@ -36,17 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Mobilné menu
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
-        // Animácia hamburgera
-        const spans = hamburger.querySelectorAll('span');
-        spans[0].style.transform = navMenu.classList.contains('active') ? 'rotate(45deg) translate(7px, 7px)' : 'none';
-        spans[1].style.opacity = navMenu.classList.contains('active') ? '0' : '1';
-        spans[2].style.transform = navMenu.classList.contains('active') ? 'rotate(-45deg) translate(6px, -6px)' : 'none';
     });
 
-    // Zatvorenie menu po kliknutí na link (pre mobil)
+    // Zatvorenie menu po kliknutí na link
     document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-        });
+        link.addEventListener('click', () => navMenu.classList.remove('active'));
     });
 });
